@@ -1,15 +1,15 @@
-// Get the title
-const title = document.querySelector('title')
+// Get the title and transform it into a slug
+const title = document.querySelector('title').textContent.toLowerCase().replace(/[^\w]+/g, '-');
 
 // Fetch the recipe data from the JSON file
 fetch('https://raw.githubusercontent.com/insky2/Rezept/master/recipes.json')
   .then(response => response.json())
   .then(data => {
     console.log(data);
+    console.log(title)
     // Find the recipe in the JSON data that matches the title
-    const recipe = data.find(recipe => recipe.slug.toLowerCase().replace(/\s+/g, '-') === title.textContent.toLowerCase().replace(/\s+/g, '-'));
-
-    
+    const recipe = data.find(recipe => recipe.slug === title);
+    console.log(recipe);
     // Set the values of the HTML elements using the recipe data
     document.getElementById('recipe-name').textContent = recipe.name;
     document.getElementById('recipe-tags').textContent = recipe.tags.join(', ');
@@ -23,7 +23,7 @@ fetch('https://raw.githubusercontent.com/insky2/Rezept/master/recipes.json')
     document.getElementById('recipe-description').textContent = recipe.description;
     document.getElementById('recipe-instructions').textContent = recipe.instructions;
     document.getElementById('recipe-notes').textContent = recipe.notes;
-    
+
     // Loop through the ingredients array and create a list item element for each ingredient
     const ingredientsList = document.getElementById('recipe-ingredients');
     recipe.ingredients.forEach(ingredient => {
@@ -33,3 +33,5 @@ fetch('https://raw.githubusercontent.com/insky2/Rezept/master/recipes.json')
     });
   })
   .catch(error => console.error(error));
+
+
