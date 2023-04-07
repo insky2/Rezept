@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  script src="scripts.js"
+  <link rel="stylesheet" href="styles.css">
+  <!-- Sorgt dafür das immer der Name des Dokuments als Titel angezeigt wird -->
+  <script>
+    document.title = window.location.pathname.split('/').pop().replace('.html', '');
+    </script>
+    <title></title>
+</head>
+<body>
+    <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+          <ul>
+          <button onclick="toggleSidebar()"> <a id="close-btn" href="#" class="close-btn">&times;</a>
+          </button> 
+          <br>
+          <li><a class="" href="index.html">Start</a></li>
+          <br>
+          <li><a class="" href="explore.html">Explore</a></li>
+          <br>
+          <br>
+          <li><a class="" href="library.html">Library</a></li>
+          <br>
+          </ul>
+        </div>
+
+    <!--Hier wird nun der Inhalt der Rezepte mit JSON importiert, um dafür zu sorgen das es sich auf unterschiedlichen Geräten nutzen lässt wird Flexbox verwendet-->
+    <body>
+        <div id="recipe">
+          <h1 id="recipe-name"></h1>
+          <p id="recipe-tags"></p>
+          <p id="recipe-created"></p>
+          <p id="recipe-lastModified"></p>
+          <p id="recipe-author"></p>
+          <p id="recipe-cookingtime"></p>
+          <p id="recipe-quelle"></p>
+          <img id="recipe-headerimage" alt="Recipe Image">
+          <p id="recipe-description"></p>
+          <ul id="recipe-ingredients"></ul>
+          <p id="recipe-instructions"></p>
+          <p id="recipe-notes"></p>
+        </div>
+</body>
+<script src="newtry.js"> </script>
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  script src="scripts.js"
+  <link rel="stylesheet" href="styles.css">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+	<button onclick="toggleSidebar()"> <a id="close-btn" href="#" class="close-btn">&times;</a>
+	</button> 
+    <br>
+    <li><a class="" href="index.html">Start</a></li>
+    <br>
+    <li><a class="" href="explore.html">Explore</a></li>
+    <br>
+    <br>
+    <li><a class="" href="library.html">Library</a></li>
+    <br>
+    </ul>
+  </div>
+  <!-- Main content -->
+  <div class="main">
+    <button class="menu-btn" id="menu-btn">&#9776; Categories</button>
+    <div class="recipe-card">
+      <img src="https://via.placeholder.com/300x200" alt="Recipe Image">
+      <div class="content">
+        <h3>Recipe Title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed lobortis nunc, eu dapibus mi. In hac habitasse platea dictumst.</p>
+        <a href="#" class="btn">View Recipe</a>
+      </div>
+    </div>
+    <div class="recipe-card">
+      <img src="https://via.placeholder.com/300x200" alt="Recipe Image">
+      <div class="content">
+        <h3>Recipe Title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed lobortis nunc, eu dapibus mi. In hac habitasse platea dictumst.</p>
+        <a href="#" class="btn">View Recipe</a>
+      </div>
+    </div>
+    <div class="recipe-card">
+      <img src="https://via.placeholder.com/300x200" alt="Recipe Image">
+      <div class="content">
+        <h3>Recipe Title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed lobortis nunc, eu dapibus mi. In hac habitasse platea dictumst.</p>
+        <a href="#" class="btn">View Recipe</a>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+    });
+
+	function toggleSidebar() {
+		sidebar.classList.remove("active");
+	}
+
+    // Define the mapping between HTML files and corresponding list items
+      var htmlToFile = {
+      'INDEX.html': 0,
+      'explore.html': 1,
+      'shoppinglist.html': 2,
+      'library.html': 3,
+      'plan.html': 4
+      };
+
+    // Get the current filename
+    var filename = location.pathname.split('/').pop();
+
+    // Get the index of the corresponding list item
+    var listItemIndex = htmlToFile[filename];
+
+    // If the current HTML file is mapped to a list item
+    if (listItemIndex !== undefined) {
+      // Get all the links in the sidebar
+      var links = document.querySelectorAll('#sidebar a');
+      // Add the active class to the corresponding link
+      links[listItemIndex].classList.add('active');
+    }
+
+    // Toggle the responsive menu
+    function toggleMenu() {
+      var sidebar = document.getElementById("sidebar");
+      if (sidebar.className === "") {
+        sidebar.className = "responsive";
+      } else {
+        sidebar.className = "";
+      }
+    }
+  </script>
+</html>

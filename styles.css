@@ -1,0 +1,148 @@
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  background-color: #000000;
+  overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar h2 {
+  margin: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  margin-left: 22px;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar a:hover {
+  background-color: #ddd;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.recipe-card {
+  display: inline-block;
+  width: 300px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-card .content {
+  padding: 20px;
+}
+
+.recipe-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.recipe-card p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.recipe-card .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.recipe-card .btn:hover {
+  background-color: #ddd;
+}
+
+/* Categories button */
+.menu-btn {
+  display: none;
+}
+button {
+	border: none;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 766px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    background-color: #fff;
+    overflow: hidden;
+    position: absolute;
+    left: -100%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main {
+    margin-left: 0;
+    
+  }
+
+  .recipe-card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  /* Update the specificity of the selector to target the close button */
+  .sidebar.active .close-btn {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #f1f1f1;
+    position: fixed;
+  }
+    /* Update the specificity of the selector to target the close button */
+	#close-btn {
+  display: none;
+	 }
+}
