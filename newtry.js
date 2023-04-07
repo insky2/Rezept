@@ -1,13 +1,15 @@
 // Get the filename from the URL
 const url = new URL(window.location.href);
-const filename = url.pathname.split('/').pop().replace('.html', '');
+const title = document.querySelector('title')
 
 // Fetch the recipe data from the JSON file
-fetch('recipes.json')
+fetch('https://raw.githubusercontent.com/insky2/Rezept/master/recipes.json')
   .then(response => response.json())
   .then(data => {
+    console.log(data);
     // Find the recipe in the JSON data that matches the filename
-    const recipe = data.recipes.find(recipe => recipe.name.toLowerCase().replace(/\s+/g, '-') === filename);
+    const recipe = data.find(recipe => recipe.name.toLowerCase().replace(/\s+/g, '-') === filename);
+
     
     // Set the values of the HTML elements using the recipe data
     document.getElementById('recipe-name').textContent = recipe.name;
