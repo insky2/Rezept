@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  script src="scripts.js"
+  <script src="scripts.js"></script>
   <link rel="stylesheet" href="styles.css">
   <title>Chocolate Cake</title>
 </head>
@@ -23,22 +23,23 @@
           </ul>
         </div>
 
-    <!--Hier wird nun der Inhalt der Rezepte mit JSON importiert, um dafür zu sorgen das es sich auf unterschiedlichen Geräten nutzen lässt wird Flexbox verwendet-->
-    <body>
-        <div id="recipe">
+    <!--Hier wird nun der Inhalt der Rezepte mit JSON importiert, um dafür zu sorgen das es sich auf unterschiedlichen Geräten nutzen lässt wird Flexbox verwendet, die IDs sind notwendig um in den richtigen Block, den richtigen JSON Inhalt zu importieren-->
+    <div class="main">
+    <div id="recipe">
           <h1 id="recipe-name"></h1>
           <p id="recipe-tags"></p>
           <p id="recipe-created"></p>
           <p id="recipe-lastModified"></p>
-          <p id="recipe-author"></p>
+          <h3 id="recipe-author"></h3>
           <p id="recipe-cookingtime"></p>
           <p id="recipe-quelle"></p>
           <img id="recipe-headerimage" alt="Recipe Image">
-          <p id="recipe-description"></p>
+          <h4 id="recipe-description"></h4>
           <ul id="recipe-ingredients"></ul>
-          <p id="recipe-instructions"></p>
           <p id="recipe-notes"></p>
+          <p id="recipe-instructions"></p>
         </div>
+      </div>
 </body>
-<script src="newtry.js"> </script>
+<script src="jsonhandling.js"> </script>
 

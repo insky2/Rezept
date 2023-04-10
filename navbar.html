@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<style>
+/* Basic styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-link:hover {
+  color: #666;
+}
+
+.navbar-search {
+  display: flex;
+}
+
+.navbar-search input {
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+
+.navbar-search button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  
+  .container {
+    padding: 10px;
+  }
+
+  .navbar-toggler {
+    display: block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 10; /* To overlap the navbar-collapse */
+  }
+
+  .navbar-toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    position: relative; /* To create the hamburger icon */
+    transition: transform .3s ease; /* For animation */
+    --before-rotate :0deg; /* Custom properties for pseudo-elements rotation */
+    --after-rotate :0deg;  }
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  width: inherit; /* Same as parent */
+  height: inherit; /* Same as parent */
+  background-color: inherit; /* Same as parent */
+  position: absolute; /* To position the lines */
+  left: 0; /* To align the lines */
+  transition: transform .3s ease; /* For animation */
+  
+}
+
+ .navbar-toggler-icon::before {
+   top: -10px; /* Distance between the lines */
+   transform: rotate(var(--before-rotate)); /* Use custom property for rotation */
+ }
+
+ .navbar-toggler-icon::after {
+   bottom: -10px; /* Distance between the lines */
+   transform: rotate(var(--after-rotate)); /* Use custom property for rotation */
+ }
+
+ .navbar-collapse {
+   position: absolute; /* To cover the whole screen */
+   top: 0; 
+   left: -100%; /* To hide it initially */
+   width: 100%;
+   height: 100%;
+   background-color:white; 
+   transition:left .3s ease; /* For animation */
+ }
+
+ .navbar-nav {
+   flex-direction: column; /* To stack the links vertically */
+   align-items:flex-start; /* To align the links to the left */
+   margin-top :60px; /* To avoid overlapping with the navbar-brand */
+ }
+
+ .nav-link {
+   display:block; /* To fill the whole width */
+   padding-left :20px; /* To add some space on the left */
+ }
+
+ .navbar-search {
+   margin-top :20px; /* To add some space on the top */
+   margin-left :20px;
+ }
+
+ .show {
+   left: 0; /* To show the navbar-collapse element */
+ }
+
+ .cross {
+   transform: rotate(45deg); /* To rotate the icon to a cross shape */
+ }
+}
+</style>
+<html>
+<nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="logo.png" alt="Logo">
+      </a>
+      <button class="navbar-toggler" type="button" aria-label="Toggle menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Rezepte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Videos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Newsletter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Abonnieren</a>
+          </li>
+        </ul>
+        <form class="navbar-search">
+          <input type="text" placeholder="Suchen" aria-label="Search">
+          <button type="submit" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  </html>
+  <script>
+    // Get the elements we need
+const navbarToggler = document.querySelector(".navbar-toggler");
+const navbarCollapse = document.querySelector(".navbar-collapse");
+const navbarTogglerIcon = document.querySelector(".navbar-toggler-icon");
+
+// Add a click event listener to the toggler button
+navbarToggler.addEventListener("click", function() {
+  // Toggle the navbar-collapse element
+  navbarCollapse.classList.toggle("show");
+  // Toggle the icon from hamburger to cross and vice versa
+  navbarTogglerIcon.classList.toggle("cross");
+});
+
+// Define a function to toggle the icon
+function toggleIcon() {
+  // If the icon is a hamburger
+  if (this.classList.contains("cross")) {
+    // Rotate it back to normal position
+    this.style.transform = "rotate(0deg)";
+    // Remove the cross class
+    this.classList.remove("cross");
+    // Change the pseudo-elements to horizontal lines
+    this.style.setProperty("--before-rotate", "0deg");
+    this.style.setProperty("--after-rotate", "0deg");
+  } else {
+    // Otherwise, if the icon is a cross
+    // Rotate it 45 degrees clockwise
+    this.style.transform = "rotate(45deg)";
+    // Add the cross class
+    this.classList.add("cross");
+    // Change the pseudo-elements to vertical lines
+    this.style.setProperty("--before-rotate", "90deg");
+    this.style.setProperty("--after-rotate", "-90deg");
+  }
+}
+
+// Add a transitionend event listener to the icon
+navbarTogglerIcon.addEventListener("transitionend", toggleIcon);
+</script>
