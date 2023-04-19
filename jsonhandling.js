@@ -17,6 +17,7 @@ fetch('https://raw.githubusercontent.com/insky2/Rezept/master/recipes.json')
     document.getElementById('recipe-lastModified').textContent = recipe.lastModified;
     document.getElementById('recipe-author').textContent = recipe.author;
     document.getElementById('recipe-cookingtime').textContent = recipe.cookingtime;
+    document.getElementById('recipe-servings').textContent = recipe.recipeservings;
     document.getElementById('recipe-quelle').textContent = recipe.quelle;
     document.getElementById('recipe-headerimage').src = recipe.headerimage;
     document.getElementById('recipe-headerimage').alt = recipe.name;

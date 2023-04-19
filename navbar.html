@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 body {
-  margin: 0;
+  font-family: 'PT Serif', serif;
 }
 
-
+.topnav {
+  overflow: hidden;
+}
 
 .topnav a {
   float: left;
@@ -20,16 +25,22 @@ body {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  text-decoration: #EBB02D wavy underline; ;
   color: black;
+  text-decoration-thickness: 2,6px
 }
 
 .topnav a.active {
-    text-decoration: underline;
+  text-decoration: underline;
+  color: #7AA874;
 }
 
 .topnav .icon {
   display: none;
+}
+
+.topnav .icon:hover {
+  background-color: transparent;
 }
 
 @media screen and (max-width: 600px) {
@@ -56,31 +67,23 @@ body {
 </style>
 </head>
 <body>
-<nav>
-<div class="topnav" id="myTopnav" id="nav">
-  <a href="INDEX.html" class="">Home</a>
-  <a href="explore.html" class="">Explore</a>
-  <a href="libary.html" class="">Library</a>
+
+<div class="topnav" id="myTopnav">
+  <a href="INDEX.html">Home</a>
+  <a href="explore.html">Explore</a>
+  <a href="libary.html">Libary</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
+    <svg viewBox="0 0 100 80" width="40" height="20">
+      <rect width="80" height="15"></rect>
+      <rect y="30" width="80" height="15"></rect>
+      <rect y="60" width="80" height="15"></rect>
+    </svg>
   </a>
 </div>
-</nav>
+
+
+
 <script>
-// Get the current page URL
-const url = window.location.href;
-
-// Get all the links in the navigation
-const links = document.querySelectorAll('#nav a');
-
-// Loop through each link and compare its href with the current URL
-links.forEach(link => {
-  if (link.href === url) {
-    // Add the active class to the link that matches the current URL
-    link.classList.add('active');
-  }
-});
-
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -89,6 +92,21 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+// get the current URL
+var currentUrl = window.location.href;
+
+// get all the links in the navigation bar
+var links = document.querySelectorAll('.topnav a');
+
+// loop through the links and check if the URL matches
+for (var i = 0; i < links.length; i++) {
+  var linkUrl = links[i].href;
+  if (currentUrl === linkUrl) {
+    links[i].classList.add('active');
+  }
+}
+
+
 </script>
 
 </body>
