@@ -84,28 +84,21 @@ body {
 
 
 <script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+window.onload = function() {
+  // Check if recipe data exists in local storage
+  const recipeData = localStorage.getItem('recipeData');
+  if (recipeData) {
   } else {
-    x.className = "topnav";
+    // If the recipe data is not already in Local Storage, fetch it from the remote JSON file
+    fetch('https://raw.githubusercontent.com/insky2/Rezept/master/recipes.json')
+      .then(response => response.json())
+      .then(data => {
+        // Store the recipe data in Local Storage
+        localStorage.setItem('recipeData', JSON.stringify(data));
+      })
+      .catch(error => console.error(error));
   }
-}
-// get the current URL
-var currentUrl = window.location.href;
-
-// get all the links in the navigation bar
-var links = document.querySelectorAll('.topnav a');
-
-// loop through the links and check if the URL matches
-for (var i = 0; i < links.length; i++) {
-  var linkUrl = links[i].href;
-  if (currentUrl === linkUrl) {
-    links[i].classList.add('active');
-  }
-}
-
+};
 
 </script>
 

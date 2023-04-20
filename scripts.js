@@ -1,48 +1,37 @@
-const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
-const sidebar = document.getElementById('sidebar');
 
-menuBtn.addEventListener('click', () => {
- sidebar.classList.add('active');
-    });
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+// check if recipe is saved in localStorage
+var recipeJson = localStorage.getItem('recipe');
+if (recipeJson) {
+  var recipeObj = JSON.parse(recipeJson);
+  if (recipeObj.saved === 'y') {
+    // assign the "active" class to the link with href="library.html"
+    var libraryLink = document.querySelector('a[href="library.html"]');
+    libraryLink.classList.add('active');
+  } else {
+    // assign the "active" class to the link with href="explore.html"
+    var exploreLink = document.querySelector('a[href="explore.html"]');
+    exploreLink.classList.add('active');
+  }
+} else {
+  // get the current URL
+  var currentUrl = window.location.href;
 
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.remove('active');
-    });
+  // get all the links in the navigation bar
+  var links = document.querySelectorAll('.topnav a');
 
-	function toggleSidebar() {
-		sidebar.classList.remove("active");
-	}
-
-        // Define the mapping between HTML files and corresponding list items
-        var htmlToFile = {
-      'index.html': 0,
-      'explore.html': 1,
-      'shoppinglist.html': 2,
-      'library.html': 3,
-      'plan.html': 4
-    };
-
-    // Get the current filename
-    var filename = location.pathname.split('/').pop();
-
-    // Get the index of the corresponding list item
-    var listItemIndex = htmlToFile[filename];
-
-    // If the current HTML file is mapped to a list item
-    if (listItemIndex !== undefined) {
-      // Get all the links in the navbar
-      var links = document.querySelectorAll('#navbar a');
-      // Add the active class to the corresponding link
-      links[listItemIndex].classList.add('active');
+  // loop through the links and check if the URL matches
+  for (var i = 0; i < links.length; i++) {
+    var linkUrl = links[i].href;
+    if (currentUrl === linkUrl) {
+      links[i].classList.add('active');
     }
-
-    // Toggle the responsive menu
-    function toggleMenu() {
-      var navbar = document.getElementById("navbar");
-      if (navbar.className === "") {
-        navbar.className = "responsive";
-      } else {
-        navbar.className = "";
-      }
-    }
+  }
+}

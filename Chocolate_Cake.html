@@ -6,24 +6,20 @@
   <link rel="stylesheet" href="styles.css">
   <title>Chocolate Cake</title>
 </head>
-<body>
-    <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-          <ul>
-          <button onclick="toggleSidebar()"> <a id="close-btn" href="#" class="close-btn">&times;</a>
-          </button> 
-          <br>
-          <li><a class="" href="index.html">Start</a></li>
-          <br>
-          <li><a class="" href="explore.html">Explore</a></li>
-          <br>
-          <br>
-          <li><a class="" href="library.html">Library</a></li>
-          <br>
-          </ul>
-        </div>
 
     <!--Hier wird nun der Inhalt der Rezepte mit JSON importiert, um dafür zu sorgen das es sich auf unterschiedlichen Geräten nutzen lässt wird Flexbox verwendet, die IDs sind notwendig um in den richtigen Block, den richtigen JSON Inhalt zu importieren-->
+    <div class="topnav" id="myTopnav">
+      <a href="INDEX.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="libary.html">Libary</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <svg viewBox="0 0 100 80" width="40" height="20">
+          <rect width="80" height="15"></rect>
+          <rect y="30" width="80" height="15"></rect>
+          <rect y="60" width="80" height="15"></rect>
+        </svg>
+      </a>
+    </div>
     <div class="main">
     <div id="recipe">
           <h1 id="recipe-name"></h1>
